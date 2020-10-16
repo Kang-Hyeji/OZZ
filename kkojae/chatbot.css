@@ -80,7 +80,7 @@ body{
     /* text-align: left; */
     padding: 10px;
     margin-left: 20px;
-    width: 400px;
+    /* width: 400px; */
     border: 1px solid gray;
     border-radius: 10px;   
     border-color: white;
@@ -88,6 +88,21 @@ body{
 
     color: #666666;
     font-weight: 700;
+}
+
+.container_content_jae{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container_content_jae_p{
+    margin-right: 10px;
+}
+
+.container_content_jae img {
+    width: 70px;
+    height: 70px;
+    margin-left: 10px;
 }
 
 .container_footer{
@@ -135,3 +150,4 @@ body{
 .footer_button:active{
     transform: translateY(0.9px);
 }
+
