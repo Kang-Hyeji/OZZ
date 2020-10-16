@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./chatbot.css" />
+    <script src="./chatbot.js" defer></script>
     <title>OzzChatBot</title>
 </head>
 <body>
@@ -12,24 +13,28 @@
         <h3 class="header_maintext">Ozz Chat-Bot</h3>
         <h5 class="header_manage">Manage</h5>
     </header>
-    <div class="container">
+    <div id="container" class="container">
         <div class="container_header">
             <img src="./minjong.png" alt="image" />
             <h2>Min~</h2>
         </div>
+
         <div class="container_content">
             <img src="./minjong.png" alt="image" />
-            <p>호령아 안녕? 궁금한거 있으면 다 물어봐~</p>
+            <p>호령아 안녕?</p>
         </div>
-        <div class="container_footer">
+
+        <!-- <div class="container_footer">
             <img src="./minjong.png" alt="image" />
             <textarea name="answer" id="" cols="30" rows="5"></textarea>
-        </div>
+        </div> -->
     </div>
     <br/>
     <footer class="footer">
-        <input class="footer_input" type="text" placeholder="글을 입력해주세요" />
-        <button class="footer_button" type="submit">입력</button>
+        <!-- <form action="" id="footer_form"> -->
+        <input id="footer_input" class="footer_input" type="text" placeholder="글을 입력해주세요" />
+        <button id="footer_button" class="footer_button" type="submit">입력</button>
+        <!-- </form> -->
     </footer>
 </body>
 </html>
