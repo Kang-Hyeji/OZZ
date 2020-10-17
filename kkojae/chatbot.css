@@ -7,7 +7,6 @@ html{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 body{
@@ -15,31 +14,67 @@ body{
     flex-direction: column;
     /* justify-content: center; */
     /* align-items: center; */
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     border-radius: 30px;
     padding: 30px;
+    box-shadow: 0px 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0,0,0,0.08);
 }
 
 .header{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column;
+    /* align-items: center; */
     border-bottom: 1px solid gray;
     padding-bottom: 20px;
 }
 
-.header_maintext{
-    cursor: pointer;
+.header_date{
+    display: flex;
+    justify-content: flex-end;
+    /* border: 1px solid gray; */
 }
 
-.header_home{
+.header_date_time{
+    margin-right: 10px;
+}
+
+.header_date_day{
+    margin-right: 10px;
+}
+
+.header_content{
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid gray; */
+}
+
+.header .header_content .header_content_maintext{
+    cursor: pointer;
+    padding: 5px;
+}
+
+.header .header_content .header_content_home{
     /* margin-right: 50px; */
     cursor: pointer;
+    padding: 5px;
 } 
 
-.header_manage{
+.header .header_content .header_content_reset{
     /* margin-left: 50px; */
     cursor: pointer;
+    /* border: 1px solid gray; */
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0,0,0,0.08);
+    transition: 1s;
+}
+
+.header_content_reset:hover{
+    transform: scale(1.1);
+}
+
+.header_content_reset:active{
+    transform: translateY(0.9px);
 }
 
 .container{
@@ -51,7 +86,7 @@ body{
 
 .container_header{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
     border-bottom: 1px solid gray;
@@ -61,17 +96,34 @@ body{
     padding: 10px;
 }
 
-.container_header img{
-    width: 100px;
+.container_header_img{
+    display: flex;
+    cursor: pointer;
+    transition: 0.9s;
+    box-shadow: 0px 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0,0,0,0.08);
+    border-radius: 30px;
 }
 
+.container_header_img:hover{
+    transform: scale(1.1);
+}
+
+.container_header_img:active{
+    transform: translateY(0.9px);
+}
+
+.container .container_header img{
+    width: 100px;
+    height: 100px;
+    /* border: 1px solid gray; */
+}
 
 .container_content{
     display: flex;
     padding: 10px;
 }
 
-.container_content img{
+.container .container_content img{
     width: 70px;
     height: 70px;
 }
