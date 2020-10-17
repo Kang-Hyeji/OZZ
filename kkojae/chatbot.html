@@ -9,24 +9,33 @@
 </head>
 <body>
     <header class="header" >
-        <h5 class="header_home"> < Home</h5>
-        <h3 class="header_maintext">Ozz Chat-Bot</h3>
-        <h5 class="header_manage">Manage</h5>
+        <div class="header_date">
+            <div class="header_date_day" id="header_date_day"></div>
+            <div class="header_date_time" id="header_date_time"></div>
+        </div>
+
+        <div class="header_content">
+            <h5 class="header_content_home"> < Home</h5>
+            <h3 class="header_content_maintext">Ozz Chat-Bot</h3>
+            <h5 id="header_content_reset" class="header_content_reset">Reset</h5>
+        </div>
     </header>
+
     <div id="container" class="container">
         <div class="container_header">
-            <img src="./minjong.png" alt="image" />
-            <h2>Min~</h2>
+            <div id="container_header_img_min" class="container_header_img">
+                <img src="./minjong.png" alt="image" />
+                <h2 id="container_header_img_min_target">Min~</h2>
+            </div>
+            <div id="container_header_img_byung" class="container_header_img">
+                <img src="./byung.png" alt="image" />
+                <h2 id="container_header_img_byung_target">Byung~</h2>
+            </div>
         </div>
 
-        <div class="container_content">
-            <img src="./minjong.png" alt="image" />
-            <p>호령아 안녕?</p>
-        </div>
-
-        <!-- <div class="container_footer">
-            <img src="./minjong.png" alt="image" />
-            <textarea name="answer" id="" cols="30" rows="5"></textarea>
+        <!-- <div class="container_content">
+            <img src="./minjong.png" alt="min_image" />
+            <p>무엇이든 물어보세요!</p>
         </div> -->
     </div>
     <br/>
