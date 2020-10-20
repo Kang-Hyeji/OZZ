@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>첫 번째 애플리케이션</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+  </head>
+  <body>
+    {% from "_formhelpers.html" import render_field %}
+    <div>이름을 입력해주세요.</div>
+    <form method="POST" action="/hello">
+        <dl>
+            {{ render_field(form.sayhello) }}
+        </dl>
+        <input type="submit" value="이름 입력" name="submit_btn">
+    </form>
+  </body>
+</html>
