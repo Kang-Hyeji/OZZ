@@ -8,54 +8,51 @@
     <title>OzzChatBot</title>
 </head>
 <body>
-    <header class="header" >
-        <div class="header_main">
-            <div class="header_main_greeting">
-                <p class="header_main_greeting_p" id="header_main_greeting_p"></p>
+    <div class="body_container">
+        <header class="header" >
+            <div class="header_main">
+                <div class="header_main_greeting">
+                    <p class="header_main_greeting_p" id="header_main_greeting_p"></p>
+                </div>
+                <div class="header_main_date">
+                    <p class="header_main_date_day" id="header_main_date_day"></p>
+                    <p class="header_main_date_time" id="header_main_date_time"></p>
+                </div>
             </div>
-            <div class="header_main_date">
-                <p class="header_main_date_day" id="header_main_date_day"></p>
-                <p class="header_main_date_time" id="header_main_date_time"></p>
+
+            <div class="header_content">
+                <span class="header_content_home"> < Home</span>
+                <h1 class="header_content_maintext">Ozz Chat-Bot</h1>
+                <span id="header_content_reset" class="header_content_reset">Reset</span>
+            </div>
+        </header>
+
+        <div id="container" class="container">
+            <div class="container_header">
+                <div id="container_header_img_min" class="container_header_img">
+                    <img src="./assets/minjong.png" alt="image" />
+                    <h2 id="container_header_img_min_target">Min~</h2>
+                </div>
+                <div id="container_header_img_byung" class="container_header_img">
+                    <img src="./assets/byung.png" alt="image" />
+                    <h2 id="container_header_img_byung_target">Byung~</h2>
+                </div>
             </div>
         </div>
-
-        <div class="header_content">
-            <h5 class="header_content_home"> < Home</h5>
-            <h3 class="header_content_maintext">Ozz Chat-Bot</h3>
-            <h5 id="header_content_reset" class="header_content_reset">Reset</h5>
-        </div>
-    </header>
-
-    <div id="container" class="container">
-        <div class="container_header">
-            <div id="container_header_img_min" class="container_header_img">
-                <img src="./assets/minjong.png" alt="image" />
-                <h2 id="container_header_img_min_target">Min~</h2>
+        
+        <footer class="footer">
+            <div class="footer_icon">
+                <img class="footer_emoticon" src="./assets/emoticon_image.svg" alt="emoticon" />
+                <img class="footer_paperclip" src="./assets/paperclip-image.svg" alt="paperclip" />
+                <img class="footer_microphone" src="./assets/mic-image.svg" alt="microphone" />
             </div>
-            <div id="container_header_img_byung" class="container_header_img">
-                <img src="./assets/byung.png" alt="image" />
-                <h2 id="container_header_img_byung_target">Byung~</h2>
+            <div class="footer_form">
+                <!-- <form action="" id="footer_form"> -->
+                <input id="footer_input" class="footer_input" type="text" placeholder="글을 입력해주세요" />
+                <button id="footer_button" class="footer_button" type="submit">입력</button>
+                <!-- </form> -->
             </div>
-        </div>
-
-        <!-- <div class="container_content">
-            <img src="./minjong.png" alt="min_image" />
-            <p>무엇이든 물어보세요!</p>
-        </div> -->
+        </footer>
     </div>
-    
-    <footer class="footer">
-        <div class="footer_icon">
-            <img class="footer_emoticon" src="./assets/emoticon_image.svg" alt="emoticon" />
-            <img class="footer_paperclip" src="./assets/paperclip-image.svg" alt="paperclip" />
-            <img class="footer_microphone" src="./assets/mic-image.svg" alt="microphone" />
-        </div>
-        <div class="footer_form">
-            <!-- <form action="" id="footer_form"> -->
-            <input id="footer_input" class="footer_input" type="text" placeholder="글을 입력해주세요" />
-            <button id="footer_button" class="footer_button" type="submit">입력</button>
-            <!-- </form> -->
-        </div>
-    </footer>
 </body>
 </html>
