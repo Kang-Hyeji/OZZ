@@ -10,8 +10,11 @@ const greetingFunc = () => {
 }
 greetingFunc();
 
-const scrollControl = document.getElementById("container");
-scrollControl.scrollTop = scrollControl.scrollHeight;
+// 스크롤 내려주는 함수
+const scrollControl = ()=>{
+    const scrollControl = document.getElementById("container");
+    scrollControl.scrollTop = scrollControl.scrollHeight;        
+}
 
 const todayDate = new Date();
 let dayDate = todayDate.toLocaleDateString();
@@ -47,7 +50,7 @@ const createMinElem = () => {
     newMinDiv.setAttribute("class", "container_content");
     newMinDivContainer.setAttribute("class", "container_content_p");
     newMinDivContainerNameTime.setAttribute("class", "container_content_p_name_time");
-    newMinImg.setAttribute("src", "./minjong.png");
+    newMinImg.setAttribute("src", "./assets/minjong.png");
     newMinImg.setAttribute("alt", "min_image");
     newMinNameP.setAttribute("class", "container_content_name");
     newMinTimeP.setAttribute("class", "container_content_time");
@@ -77,7 +80,7 @@ const createByungElem = () => {
     newByungDiv.setAttribute("class", "container_content");
     newByungDivContainer.setAttribute("class", "container_content_p");
     newByungDivContainerNameTime.setAttribute("class", "container_content_p_name_time");
-    newByungImg.setAttribute("src", "./byung.png");
+    newByungImg.setAttribute("src", "./assets/byung.png");
     newByungImg.setAttribute("alt", "byung_image");
     newByungNameP.setAttribute("class", "container_content_name");
     newByungTimeP.setAttribute("class", "container_content_time");
@@ -107,6 +110,7 @@ for (let i = 0; i < imgClickList.length; i++){
             targetArray.push(targetMin);
             // console.log(targetArray);
             imgClickList[i].style.backgroundColor = "#fff"
+            // scrollControl();
         });
     } else if (imgClickList[i] === imgClickList[1]){
         imgClickList[i].addEventListener("click",(event)=>{
@@ -116,6 +120,7 @@ for (let i = 0; i < imgClickList.length; i++){
             targetArray.push(targetByung);
             // console.log(targetArray);
             imgClickList[i].style.backgroundColor = "#fff"
+            // scrollControl();
         });
     }
 }
@@ -138,7 +143,7 @@ const createElem = () => {
     newDiv.setAttribute("class", "container_content_user");
     newDivContainer.setAttribute("class", "container_content_p");
     newDivContainerNameTime.setAttribute("class", "container_content_p_name_time");
-    newImg.setAttribute("src", "./tiger.png");
+    newImg.setAttribute("src", "./assets/tiger.png");
     newImg.setAttribute("alt", "tiger_image");
     newP.setAttribute("class", "container_content_text_p");
     newP.setAttribute("id", "container_content_text_p");
@@ -169,7 +174,7 @@ const matchSentenceByMin = () => {
     newByMinDiv.setAttribute("class", "container_content");
     newByMinDivContainer.setAttribute("class", "container_content_p");
     newByMinDivContainerNameTime.setAttribute("class", "container_content_p_name_time");
-    newByMinImg.setAttribute("src", "./minjong.png");
+    newByMinImg.setAttribute("src", "./assets/minjong.png");
     newByMinImg.setAttribute("alt", "min_image");
     newByMinNameP.setAttribute("class", "container_content_name");
     newByMinTimeP.setAttribute("class", "container_content_time");
@@ -186,6 +191,7 @@ const matchSentenceByMin = () => {
         newByMinDivContainerNameTime.appendChild(newByMinNameP);
         newByMinDivContainerNameTime.appendChild(newByMinTimeP);
         newByMinDivContainer.appendChild(newByMinP);
+        scrollControl();
     }, 1000); 
 }
 
@@ -201,7 +207,7 @@ const matchSentenceByByung = () => {
     newByByungDiv.setAttribute("class", "container_content");
     newByByungDivContainer.setAttribute("class", "container_content_p");
     newByByungDivContainerNameTime.setAttribute("class", "container_content_p_name_time");
-    newByByungImg.setAttribute("src", "./byung.png");
+    newByByungImg.setAttribute("src", "./assets/byung.png");
     newByByungImg.setAttribute("alt", "byung_image");
     newByByungNameP.setAttribute("class", "container_content_name");
     newByByungTimeP.setAttribute("class", "container_content_time");
@@ -218,6 +224,7 @@ const matchSentenceByByung = () => {
         newByByungDivContainerNameTime.appendChild(newByByungNameP);
         newByByungDivContainerNameTime.appendChild(newByByungTimeP);
         newByByungDivContainer.appendChild(newByByungP);
+        scrollControl();
     }, 1000);
 }
 
@@ -236,17 +243,21 @@ footer_input.addEventListener("keydown", (event) => {
                     matchSentenceByMin();
                     // string.empty
                     footer_input.value = "";
+                    scrollControl();
                 } else if (targetArray[0] === "byung_image"){
                     matchSentenceByByung();
                     footer_input.value = "";
+                    scrollControl();
                 }
             } else{
                 if (targetArray[0] === "min_image"){
                     matchSentenceByMin();
                     footer_input.value = "";
+                    scrollControl();
                 } else if (targetArray[0] === "byung_image"){
                     matchSentenceByByung();
                     footer_input.value = "";
+                    scrollControl();
                 }
             }
         }
@@ -266,17 +277,21 @@ footer_button.addEventListener("click", (event) => {
             if (targetArray[0] === "min_image"){
                 matchSentenceByMin();
                 footer_input.value = "";
+                scrollControl();
             } else if (targetArray[0] === "byung_image"){
                 matchSentenceByByung();
                 footer_input.value = "";
+                scrollControl();
             }
         } else{
             if (targetArray[0] === "min_image"){
                 matchSentenceByMin();
                 footer_input.value = "";
+                scrollControl();
             } else if (targetArray[0] === "byung_image"){
                 matchSentenceByByung();
                 footer_input.value = "";
+                scrollControl();
             }
         }
     }   
