@@ -37,6 +37,8 @@ var wss_protocol = (window.location.protocol == 'https:') ? 'wss://': 'ws://';
 var chatSocket = new WebSocket(
         wss_protocol + window.location.host + '/ws/chat/'
         );
+
+// 메시지 받았을 때 처리하는 부분
 chatSocket.onmessage = function(e) {
         let data = JSON.parse(e.data);
         let message = data['message'];
@@ -50,12 +52,8 @@ chatSocket.onmessage = function(e) {
     };
 
 chatSocket.onclose = function(e) {
-    // 통신 끊겼을 때 액션 남기기
+    // 통신 끊겼을 때 알려주는 부분
 };
-
-
-
-
 
 
 
@@ -84,7 +82,7 @@ const createMinElem = () => {
     newMinP.setAttribute("class", "container_content_text_p");
     newMinNameP.append("Min~");
     newMinTimeP.append(`${today.getMonth()}.${today.getDate()} ${today.getHours()}:${today.getMinutes()}`);
-    newMinP.append("영화 리뷰를 남겨주세요");
+    newMinP.append("주문 도와드릴까요?");
     parent_container.appendChild(newMinDiv);
     newMinDiv.appendChild(newMinImg);
     newMinDiv.appendChild(newMinDivContainer);
@@ -114,7 +112,7 @@ const createByungElem = () => {
     newByungP.setAttribute("class", "container_content_text_p");
     newByungNameP.append("Byung~");
     newByungTimeP.append(`${today.getMonth()}.${today.getDate()} ${today.getHours()}:${today.getMinutes()}`);
-    newByungP.append("영화 리뷰를 남겨주세요");
+    newByungP.append("주문 도와드릴까요?");
     parent_container.appendChild(newByungDiv);
     newByungDiv.appendChild(newByungImg);
     newByungDiv.appendChild(newByungDivContainer);
@@ -257,7 +255,7 @@ const matchSentenceByByung = (message) => {
 
 //키보드 엔터 시
 footer_input.addEventListener("keydown", (event) => {
-    if (event.keyCode === 13){
+    if (event.keyCode === 13){ // enter, return
         document.querySelector('#footer_button').click();
     }
 });
@@ -272,6 +270,8 @@ footer_button.addEventListener("click", (event) => {
         let messageInputDom = document.querySelector('#footer_input');
         let message = messageInputDom.value;
         console.log(message);
+
+        // 메세지 받아서 전송하는 부분
         chatSocket.send(JSON.stringify({
             'message': message
         }));

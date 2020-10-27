@@ -18,7 +18,7 @@ def sentiment_predict(new_sentence):
     # 빈도수 2회 이하인 단어 제거 후 단어 집합의 크기()
     vocab_size = 19417
 
-    df = pd.read_csv('x_datas.csv')
+    df = pd.read_csv('./movie_data/x_datas.csv')
     X_train = []
     for i in df['X_train']:
         X_train.append(i.replace("'", ""))
@@ -26,7 +26,7 @@ def sentiment_predict(new_sentence):
     tokenizer = Tokenizer(vocab_size, oov_token='OOV')
     tokenizer.fit_on_texts(X_train)
 
-    loaded_model = load_model('04-0.3389.hdf5')
+    loaded_model = load_model('./movie_data/04-0.3389.hdf5')
 
     new_sentence = okt.morphs(new_sentence, stem=True)  # 토큰화
     new_sentence = [word for word in new_sentence if not word in stopwords]  # 불용어 제거
