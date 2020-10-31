@@ -56,7 +56,7 @@ const createMinElem = () => {
     newMinTimeP.setAttribute("class", "container_content_time");
     newMinP.setAttribute("class", "container_content_text_p");
     newMinNameP.append("Min~");
-    newMinTimeP.append(`${today.getMonth()}.${today.getDate()} ${today.getHours()}:${today.getMinutes()}`);
+    newMinTimeP.append(`${today.getHours()}:${today.getMinutes()}`);
     newMinP.append("무엇이든 물어보세요!");
     parent_container.appendChild(newMinDiv);
     newMinDiv.appendChild(newMinImg);
@@ -86,7 +86,7 @@ const createByungElem = () => {
     newByungTimeP.setAttribute("class", "container_content_time");
     newByungP.setAttribute("class", "container_content_text_p");
     newByungNameP.append("Byung~");
-    newByungTimeP.append(`${today.getMonth()}.${today.getDate()} ${today.getHours()}:${today.getMinutes()}`);
+    newByungTimeP.append(`${today.getHours()}:${today.getMinutes()}`);
     newByungP.append("무엇이든 물어보세요!");
     parent_container.appendChild(newByungDiv);
     newByungDiv.appendChild(newByungImg);
@@ -143,14 +143,14 @@ const createElem = () => {
     newDiv.setAttribute("class", "container_content_user");
     newDivContainer.setAttribute("class", "container_content_p");
     newDivContainerNameTime.setAttribute("class", "container_content_p_name_time");
-    newImg.setAttribute("src", "./assets/tiger.png");
-    newImg.setAttribute("alt", "tiger_image");
+    newImg.setAttribute("src", "./assets/user-man.jpg");
+    newImg.setAttribute("alt", "user_image");
     newP.setAttribute("class", "container_content_text_p");
     newP.setAttribute("id", "container_content_text_p");
     newNameP.setAttribute("class", "container_content_name");
     newTimeP.setAttribute("class", "container_content_time");
     newNameP.append(user_name);
-    newTimeP.append(`${today.getMonth()}.${today.getDate()} ${today.getHours()}:${today.getMinutes()}`)
+    newTimeP.append(`${today.getHours()}:${today.getMinutes()}`)
     newP.append(input_value);
     parent_container.appendChild(newDiv);
     newDiv.appendChild(newDivContainer);
@@ -159,6 +159,7 @@ const createElem = () => {
     newDivContainerNameTime.appendChild(newNameP);
     newDivContainer.appendChild(newP);
     newDiv.appendChild(newImg);
+    scrollControl();
 }
 
 
@@ -181,7 +182,7 @@ const matchSentenceByMin = () => {
     newByMinP.setAttribute("id", "container_content_text_p");
     newByMinP.setAttribute("class", "container_content_text_p");
     newByMinNameP.append("Min~");
-    newByMinTimeP.append(`${today.getMonth()}.${today.getDate()} ${today.getHours()}:${today.getMinutes()}`)
+    newByMinTimeP.append(`${today.getHours()}:${today.getMinutes()}`)
     newByMinP.append("꺅!!!!!!!");
     setTimeout(() => {
         parent_container.appendChild(newByMinDiv);
@@ -214,7 +215,7 @@ const matchSentenceByByung = () => {
     newByByungP.setAttribute("id", "container_content_text_p");
     newByByungP.setAttribute("class", "container_content_text_p");
     newByByungNameP.append("Byung~");
-    newByByungTimeP.append(`${today.getMonth()}.${today.getDate()} ${today.getHours()}:${today.getMinutes()}`)
+    newByByungTimeP.append(`${today.getHours()}:${today.getMinutes()}`)
     newByByungP.append("네이노어어ㅗㅁ오ㅗㅁㅇ노!");
     setTimeout(() => {
         parent_container.appendChild(newByByungDiv);
