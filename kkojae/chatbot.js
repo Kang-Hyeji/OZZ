@@ -3,8 +3,6 @@
 // 누구누구님 Ozz Chat-Bot에 오신걸 환영합니다.
 const user_name = prompt("닉네임을 입력해주세요.");
 const greetingFunc = () => {
-    let greetingP = document.getElementById("header_main_greeting_p");
-    greetingP.innerHTML = `${user_name}님`+ `<br/>` +`Ozz Chat-Bot에 오신걸 환영합니다.`;
 
     setInterval(() => {
         const index = document.getElementById("index");
@@ -23,10 +21,6 @@ const scrollControl = ()=>{
     const scrollControl = document.getElementById("container");
     scrollControl.scrollTop = scrollControl.scrollHeight;        
 }
-
-const todayDate = new Date();
-let dayDate = todayDate.toLocaleDateString();
-document.getElementById("header_main_date_day").innerText = dayDate;
 
 setInterval(() => {
     const todayDateTime = new Date();
@@ -138,8 +132,6 @@ for (let i = 0; i < imgClickList.length; i++){
 const footer_input = document.getElementById("footer_input");
 const parent_container = document.getElementById("container");
 const footer_button = document.getElementById("footer_button");
-// console.log(parent_container);
-
 
 const createElem = () => {
     let today = new Date();
