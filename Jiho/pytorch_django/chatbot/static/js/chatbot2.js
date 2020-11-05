@@ -3,18 +3,16 @@
 // 누구누구님 Ozz Chat-Bot에 오신걸 환영합니다.
 const user_name = prompt("닉네임을 입력해주세요.");
 const greetingFunc = () => {
-    let greetingP = document.getElementById("header_main_greeting_p");
-    greetingP.innerHTML = `${user_name}님`+ `<br/>` +`Ozz Chat-Bot에 오신걸 환영합니다.`;
 
     setInterval(() => {
         const index = document.getElementById("index");
         index.style.display = "none";
-    }, 2000);
+    }, 1000);
     
     setInterval(() => {
         const body_container = document.getElementById("body_container");
         body_container.style.display = "block";
-    },2060);    
+    },1060);
 }
 greetingFunc();
 
@@ -23,10 +21,6 @@ const scrollControl = ()=>{
     const scrollControl = document.getElementById("container");
     scrollControl.scrollTop = scrollControl.scrollHeight;        
 }
-
-const todayDate = new Date();
-let dayDate = todayDate.toLocaleDateString();
-document.getElementById("header_main_date_day").innerText = dayDate;
 
 setInterval(() => {
     const todayDateTime = new Date();
