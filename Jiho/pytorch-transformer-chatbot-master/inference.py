@@ -26,7 +26,7 @@ def main(parser):
     model_dir = Path(args.model_dir)
     data_config = Config(json_path=data_dir / 'config.json')
     model_config = Config(json_path=model_dir / 'config.json')
-
+    
     # Vocab & Tokenizer
     with open(data_config.token2idx_vocab, mode='rb') as io:
         token2idx_vocab = json.load(io)
