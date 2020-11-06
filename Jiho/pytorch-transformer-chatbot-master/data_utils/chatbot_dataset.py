@@ -54,16 +54,7 @@ class ChatbotDataset(Dataset):
         """
         # 판다스를 통해서 데이터를 불러온다.
         cafe_data = pd.read_csv(data_path, header=0)
-        cafe_data['SENTENCE'] = cafe_data['SENTENCE'].str.replace("[^\w]|br", " ")
-        pre_cafe_data = cafe_data.loc[0:6673,["SPEAKER","SENTENCE"]]
-        user = pre_cafe_data[pre_cafe_data["SPEAKER"] == "고객"]["SENTENCE"]
-        service = pre_cafe_data[pre_cafe_data["SPEAKER"] == "점원"]["SENTENCE"]
-        user.name="user"
-        service.name="service"
-        service = pd.DataFrame(service).reset_index(drop=True)
-        user = pd.DataFrame(user).reset_index(drop=True)
-        result_data = pd.concat([user, service], axis=1)
-        question, answer = list(result_data['user']), list(result_data['service'])
+        question, answer = list(cafe_data['user']), list(cafe_data['service'])
         # skleran에서 지원하는 함수를 통해서 학습 셋과
         # 테스트 셋을 나눈다.
         if train_val_split:
