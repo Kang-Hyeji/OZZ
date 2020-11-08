@@ -2,7 +2,7 @@
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 import json
-from hanspell import spell_checker
+# from hanspell import spell_checker
 from chatbot.transformer.inference import inference
 
 class ChatConsumer(WebsocketConsumer):
