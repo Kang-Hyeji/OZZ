@@ -1,18 +1,17 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
-import os
+# import os
 from tensorflow import keras
 import numpy as np
-from pprint import pprint
+# from pprint import pprint
 from konlpy.tag import Mecab
 
-import sys
-import pickle
-import os
-import codecs
-import argparse
+# import sys
+# import pickle
+# import os
+# import codecs
+# import argparse
 from collections import Counter
 from threading import Thread
-from tqdm import tqdm
 
 mecab = Mecab()
 

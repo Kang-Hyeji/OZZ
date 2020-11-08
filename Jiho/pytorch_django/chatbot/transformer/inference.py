@@ -1,11 +1,11 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
-import argparse
+# import argparse
 import sys
 import numpy as np
 from pathlib import Path
 
 import json
-from konlpy.tag import Mecab
+# from konlpy.tag import Mecab
 
 import torch
 from chatbot.transformer.evaluate import decoding_from_result
