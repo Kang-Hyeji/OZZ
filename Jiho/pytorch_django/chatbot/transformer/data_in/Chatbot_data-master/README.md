@@ -10,6 +10,6 @@ Chatbot_data_for_Korean v1.0
                      
 ## Quick peek.                
                                      
-![quick_peek](./data.png)
+![quick_peek](data.png)
 
 
