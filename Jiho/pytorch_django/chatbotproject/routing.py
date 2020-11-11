@@ -1,14 +1,13 @@
 # mysite/routing.py
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
-import chatbot.routing
+from chatbot.routing import websocket_urlpatterns
 
 application = ProtocolTypeRouter({
     # (http->django views is added by default)
     'websocket': AuthMiddlewareStack(
         URLRouter(
-            chatbot.routing.websocket_urlpatterns
+            websocket_urlpatterns
         )
     ),
 })
-ASGI_APPLICATION = "chatbotproject.routing.application"

@@ -1,14 +1,14 @@
 # chat/consumers.py
 from asgiref.sync import async_to_sync
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import AsyncJsonWebsocketConsumer
 import json
 # from hanspell import spell_checker
 from chatbot.transformer.inference import inference
 
-class ChatConsumer(WebsocketConsumer):
+class ChatConsumer(AsyncJsonWebsocketConsumer):
 
     # Receive message from WebSocket
-    def receive(self, text_data):
+    async def receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
         print(message)
@@ -17,7 +17,7 @@ class ChatConsumer(WebsocketConsumer):
         # response_message = spell_checker.check(response_message).checked
         print(response_message)
         # Send message to room group
-        async_to_sync(self.channel_layer.send)(
+        await self.channel_layer.send(
             self.channel_name,
             {
                 'type': 'chat_message',
@@ -26,10 +26,10 @@ class ChatConsumer(WebsocketConsumer):
         )
 
     # Receive message from room group
-    def chat_message(self, event):
+    async def chat_message(self, event):
         message = event['message']
 
         # Send message to WebSocket
-        self.send(text_data=json.dumps({
+        await self.send(text_data=json.dumps({
             'message': message
         }))

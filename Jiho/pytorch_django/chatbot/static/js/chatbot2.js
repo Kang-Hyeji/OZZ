@@ -81,7 +81,7 @@ tel_icon.addEventListener("click", ()=>{
 tel_icon.active = false;
 
 var wss_protocol = (window.location.protocol == 'https:') ? 'wss://': 'ws://';
-var chatSocket = new WebSocket(
+var chatSocket = new ReconnectingWebSocket(
         wss_protocol + window.location.host + '/ws/chat/'
 );
 
