@@ -1,0 +1,160 @@
+ssh -i ~/pem/django.pem ubuntu@15.164.59.108
+chmod 400 ~/pem/django.pem	
+
+
+sudo apt-get update
+sudo apt-get install build-essential
+sudo apt-get install python3
+sudo apt-get install python3-pip
+sudo pip3 install --upgrade pip
+
+
+퍼블릭 키
+ssh-keygen -t rsa
+wl2138
+cat /home/ubuntu/.ssh/id_rsa.pub
+git clone ssh주소
+
+cd git폴더
+
+sudo apt-get install virtualenv
+virtualenv -p python3 venv
+source venv/bin/activate
+
+
+pip install chatspace
+pip install django
+pip install channels
+pip install channels-redis==2.4.2  
+pip install uvicorn
+pip install gunicorn
+pip install uvloop
+pip install httptools
+
+pip install torch==1.7.0+cpu torchvision==0.8.1+cpu torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
+
+pip install tensorflow-cpu
+
+#mecab install 
+pip install konlpy
+bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
+(python 치고 from konlpy.tag import Mecab 그리고 m =Mecab() 까지 테스트 할 것)
+
+python manage.py runserver
+
+sudo apt-get install nginx
+
+# Running through Gunicorn
+gunicorn chatbotproject.asgi:application -w 2 -k uvicorn.workers.UvicornWorker
+
+
+
+sudo nano /etc/systemd/system/gunicorn.service 
+
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/chatbot_ozz
+ExecStart=/home/ubuntu/chatbot_ozz/venv/bin/gunicorn chatbotproject.asgi:application -w 2 -k uvicorn.workers.UvicornWorker --bind unix:/run/gunicorn.sock
+
+
+#Creating systemd Socket and Service Files for Gunicorn
+sudo nano /etc/systemd/system/gunicorn.socket
+
+[Unit]
+Description=gunicorn socket
+
+[Socket]
+ListenStream=/run/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target
+
+sudo systemctl start gunicorn.socket
+sudo systemctl enable gunicorn.socket
+
+# Checking for the Gunicorn Socket File
+sudo systemctl status gunicorn.socket
+
+# Restart Commands
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
+
+# Check Gunicorn Status
+sudo systemctl status gunicorn
+
+
+
+sudo nano /etc/nginx/sites-available/default
+# Overriding NGINX Defaults
+
+server {
+ listen 80 default_server;
+ listen [::]:80 default_server;
+ server_name _;
+ client_max_body_size 20M;
+ charset        utf-8;
+
+ location / {
+  include proxy_params;
+  proxy_pass http://unix:/run/gunicorn.sock;
+ }
+
+ location /ws/ {
+             proxy_pass http://unix:/run/gunicorn.sock;
+             proxy_http_version 1.1;
+             proxy_set_header Upgrade $http_upgrade;
+             proxy_set_header Connection "upgrade";
+
+             proxy_redirect     off;
+             proxy_set_header   Host $host;
+             proxy_set_header   X-Real-IP $remote_addr;
+             proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+             proxy_set_header   X-Forwarded-Host $server_name;
+        }
+
+}
+
+
+	
+sudo service nginx reload
+
+
+sudo systemctl daemon-reload
+sudo service nginx reload
+sudo systemctl restart gunicorn
+
+vim /var/log/syslog
+
+
+
+
+
+(http://blog.yatis.io/install-secure-robust-redis-aws-ubuntu/)
+redis 5.0 이상 설치 필요 
+sudo apt-get update && sudo apt-get upgrade
+sudo apt install make gcc libc6-dev tcl
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+sudo make install
+make test
+
+
+sudo nano /etc/redis/redis.conf
+sudo systemctl restart redis-server  
+sudo systemctl enable redis-server  
+
+sudo /etc/init.d/redis-server restart
+
+
+
+
+
+
+
