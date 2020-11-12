@@ -4,13 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/chatbot_style.css' %}" />
     <link rel="shortcut icon" href="#" />
     <!-- <link rel="stylesheet" href="./chatbot.css" /> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js" integrity="sha512-B4skI5FiLurS86aioJx9VfozI1wjqrn6aTdJH+YQUmCZum/ZibPBTX55k5d9XM6EsKePDInkLVrN7vPmJxc1qA==" crossorigin="anonymous" defer></script>
     <script src="{% static 'js/chatbot2.js' %}" defer></script>
     <title>OzzChatBot</title>
 </head>
@@ -29,7 +27,7 @@
         <section id="index_section" class="index_section">
             <h1>Ozz Chat-Bot</h1>
             <div class="index-prompt">
-                <input id="index_input" type="text" placeholder="닉네임을 입력하세요" autofocus="" required=""/>
+                <input id="index_input" type="text" placeholder="닉네임을 입력하세요" />
                 <button id="index_button" type="button">></button>
             </div>
         </section>
@@ -53,35 +51,72 @@
                 <h1 class="header_content_maintext">Ozz Chat-Bot</h1>
                 <span id="header_content_reset" class="header_content_reset">Reset</span>
             </div>
-        </header>
 
-        <div id="container" class="container">
             <div class="container_header">
                 <div id="container_header_img_min" class="container_header_img">
-                    <img src="{% static 'assets/minjong.png' %}" alt="image" />
-                    <h2 id="container_header_img_min_target">Ozz min~</h2>
+                    <img src="{% static 'assets/user-man.jpg' %}" alt="image" />
+                    <h2 id="container_header_img_min_target">콩휴</h2>
                 </div>
                 <div class="container_header_icon">
                     <div id="container_header_icon_tel" class="container_header_icon_tel">
                         <p id="container_header_icon_tel_number" class="container_header_icon_tel_number">062-0000-0000</p>
                         <img src="{% static 'assets/phone-solid.svg' %}" alt="image"/>
                     </div>
-                    <img src="{% static 'assets/bars-solid.svg' %}" alt="image" />
+                    <img id="container_header_menu_icon" src="{% static 'assets/bars-solid.svg' %}" alt="image" />
+                    <section id="container_header_dropdown_menu" class="container_header_dropdown_menu">
+                        <h3 id="dropdown_menu_user_name"></h3>
+                        <ul>
+                            <li>
+                                <img src="{% static 'assets/setting-solid.svg' %}" alt="setting-image" />
+                                <span>설정</span>
+                            </li>
+                            <li id="logout">
+                                <img src="{% static 'assets/logout.svg' %}" alt="setting-image" />
+                                <span>채팅방 나가기</span>
+                            </li>
+                        </ul>
+                    </section>
                 </div>
             </div>
-        </div>
+        </header>
+
+        <div id="container" class="container"></div>
         
         <footer class="footer">
             <div class="footer_icon">
-                <img class="footer_emoticon" src="{% static 'assets/emoticon_image.svg' %}" alt="emoticon" />
-                <img class="footer_paperclip" src="{% static 'assets/paperclip-image.svg' %}" alt="paperclip" />
-                <img class="footer_microphone" src="{% static 'assets/mic-image.svg' %}" alt="microphone" />
+                <img id="footer_emoticon" class="footer_emoticon" src="{% static 'assets/emoticon_image.svg' %}" alt="emoticon" />
+                <img id="footer_paperclip" class="footer_paperclip" src="{% static 'assets/paperclip-image.svg' %}" alt="paperclip" />
+                <img id="footer_microphone" class="footer_microphone" src="{% static 'assets/mic-image.svg' %}" alt="microphone" />
             </div>
+            <section id="footer_icon_dropdown_menu" class="footer_icon_dropdown_menu footer_icon_dropdown_menu_active">
+                <strong>서비스 준비중입니다.</strong>
+            </section>
             <div class="footer_form">
                 <input id="footer_input" class="footer_input" type="text" placeholder="메세지를 입력해주세요" />
                 <button id="footer_button" class="footer_button" type="submit">></button>
             </div>
         </footer>
+    </section>
+
+    <section id="greeting_index" class="greeting_index">
+        <header class="index_header">
+            <div class="index_header_main_date">
+                <p class="index_header_main_date_time" id="greeting_index_header_main_date_time"></p>
+            </div>
+            <div class="index_header_main_image">
+                <img src="{% static 'assets/signal-solid.svg' %}" alt="signal-image" />
+                <img src="{% static 'assets/wifi-solid.svg' %}" alt="wifi-image" />
+                <img src="{% static 'assets/battery-three-quarters-solid.svg' %}" alt="battery-image" />
+            </div>
+        </header>
+        <section id="greeting_message" class="greeting_message">
+            <img id="greeting_message_apple_image" class="greeting_message_apple_image" src="{% static 'assets/apple-user.png' %}" alt="apple-user" />
+            <strong>이용해 주셔서 감사합니다.</strong>
+            <div id="greeting_message_return" class="greeting_message_return">
+                <img src="{% static 'assets/return.svg' %}" alt="return" />
+                <span>Home</span>
+            </div>
+        </section>
     </section>
 </body>
 </html>
