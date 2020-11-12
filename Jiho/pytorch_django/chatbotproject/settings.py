@@ -151,6 +151,8 @@ CACHES = {
     }
 }
 
-# # Use CELERY_ prefix
-# CELERY_BROKER_URL = os.environ['REDIS_URL']
-# CELERY_RESULT_BACKEND = os.environ['REDIS_URL']
+# # # Use CELERY_ prefix
+# CELERY_BROKER_URL = "redis://127.0.0.1:6379/1"
+# CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/1"
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"

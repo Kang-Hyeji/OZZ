@@ -1,7 +1,7 @@
 
-from chatspace import ChatSpace
+# from chatspace import ChatSpace
 
-spacer = ChatSpace()
+# spacer = ChatSpace()
 
 
 
@@ -21,7 +21,7 @@ def decoding_from_result(enc_input, y_pred, dec_output=None, tokenizer=None):
     else:
         # 핑퐁의 띄어쓰기 교정기 적용
         pred_str = ''.join([token.split('/')[0] for token in pred_token[0][:-1]])
-        pred_str = spacer.space(pred_str)
+        # pred_str = spacer.space(pred_str)
         # print("pred_str: ", pred_str)
         # print("")
         return pred_str
