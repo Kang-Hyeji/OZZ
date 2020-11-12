@@ -18,6 +18,10 @@ index_button.addEventListener("click", (event) => {
         event.preventDefault();
     } else{
         user_name = index_input.value;
+        // dropdown menu h3에 username 입력
+        const dropdown_menu_user_name = document.querySelector("#dropdown_menu_user_name");
+        dropdown_menu_user_name.textContent = `${user_name} 님`;
+
         const index = document.getElementById("index");
         index.style.display = "none";
 
@@ -28,12 +32,22 @@ index_button.addEventListener("click", (event) => {
             createMinElem();
         }, 1000);
     }
-})
+});
 
 // 스크롤 내려주는 함수
 const scrollControl = ()=>{
     const scrollControl = document.getElementById("container");
-    scrollControl.scrollTop = scrollControl.scrollHeight;        
+    scrollControl.scrollTop = scrollControl.scrollHeight;
+}
+
+// dropdown control 함수
+const dropdown_control = (dropdownMenu, className) => {
+    if (this.active){
+        dropdownMenu.classList.remove(className);
+    }else{
+        dropdownMenu.classList.add(className);
+    }
+    this.active = !this.active;
 }
 
 // 시간 interval
@@ -41,8 +55,10 @@ setInterval(() => {
     const todayDateTime = new Date();
     const header_date_time = document.getElementById("header_main_date_time");
     const index_header_date_time = document.querySelector("#index_header_main_date_time");
+    const greeting_date_time = document.querySelector("#greeting_index_header_main_date_time");
     header_date_time.innerText = todayDateTime.toLocaleTimeString();
     index_header_date_time.innerText = todayDateTime.toLocaleTimeString();
+    greeting_date_time.innerText = todayDateTime.toLocaleTimeString();
 }, 1000);
 
 
@@ -76,9 +92,17 @@ tel_icon.addEventListener("click", ()=>{
         tel_icon.style.boxShadow = "0px 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0,0,0,0.08)";
     }
     this.active = !this.active;
-    
 });
 tel_icon.active = false;
+
+// menu icon click event
+const menu_icon = document.querySelector("#container_header_menu_icon");
+const dropdown_menu = document.querySelector("#container_header_dropdown_menu");
+menu_icon.addEventListener("click", () => {
+    dropdown_control(dropdown_menu, "menu_active");
+});
+menu_icon.active = false;
+
 
 var wss_protocol = (window.location.protocol == 'https:') ? 'wss://': 'ws://';
 var chatSocket = new WebSocket(
@@ -89,7 +113,7 @@ var chatSocket = new WebSocket(
 chatSocket.onmessage = function(e) {
     let data = JSON.parse(e.data);
     let message = data['message'];
-    if (targetArray[0] === "min_image"){
+    if (targetArray[0] === "conghyoo-image"){
         matchSentenceByMin(message);
         scrollControl();
     }
@@ -101,7 +125,7 @@ chatSocket.onclose = function(e) {
 
 const parent_container = document.getElementById("container");
 const imgClickList = document.getElementsByClassName("container_header_img");
-const firstmessage = "OZZ Cafe에 오신것을 환영 합니다! 무엇을 도와 드릴까요?"
+const firstmessage = "안녕하세요~ 콩휴입니다! 무엇을 도와 드릴까요?"
 const createMinElem = () => {
     let today = new Date();
     let newMinDiv = document.createElement("div");
@@ -115,18 +139,18 @@ const createMinElem = () => {
     newMinDiv.setAttribute("id", "container_content");
     newMinDivContainer.setAttribute("class", "container_content_p");
     newMinDivContainerTextTime.setAttribute("class", "container_content_p_text_time");
-    newMinImg.setAttribute("src", "static/assets/minjong.png");
-    newMinImg.setAttribute("alt", "min_image");
+    newMinImg.setAttribute("src", "static/assets/user-man.jpg");
+    newMinImg.setAttribute("alt", "conghyoo-image");
     newMinNameP.setAttribute("class", "container_content_name");
     newMinTimeP.setAttribute("class", "container_content_time");
     newMinP.setAttribute("class", "container_content_text_p");
-    newMinNameP.append("Ozz min~");
+    newMinNameP.append("콩휴");
     newMinTimeP.append(`${today.getHours()}:${today.getMinutes()}`);
     newMinP.append(firstmessage);
     parent_container.appendChild(newMinDiv);
     newMinDiv.appendChild(newMinImg);
     newMinDiv.appendChild(newMinDivContainer);
-    
+
     newMinDivContainer.appendChild(newMinNameP);
     newMinDivContainer.appendChild(newMinDivContainerTextTime);
 
@@ -134,7 +158,7 @@ const createMinElem = () => {
     newMinDivContainerTextTime.appendChild(newMinTimeP);
 }
 
-const targetArray = ["min_image"];
+const targetArray = ["conghyoo-image"];
 
 const footer_input = document.getElementById("footer_input");
 const footer_button = document.getElementById("footer_button");
@@ -154,7 +178,7 @@ const createElem = () => {
     newDiv.setAttribute("id", "container_content_user");
     newDivContainer.setAttribute("class", "container_content_p");
     newDivContainerTextTime.setAttribute("class", "container_content_p_text_time");
-    newImg.setAttribute("src", "static/assets/user-man.jpg");
+    newImg.setAttribute("src", "static/assets/user-woman.jpg");
     newImg.setAttribute("alt", "user_image");
     newP.setAttribute("class", "container_content_text_p");
     newP.setAttribute("id", "container_content_text_p");
@@ -189,13 +213,13 @@ const matchSentenceByMin = (message) => {
     newByMinDiv.setAttribute("id", "conatainer_content");
     newByMinDivContainer.setAttribute("class", "container_content_p");
     newByMinDivContainerTextTime.setAttribute("class", "container_content_p_text_time");
-    newByMinImg.setAttribute("src", "static/assets/minjong.png");
-    newByMinImg.setAttribute("alt", "min_image");
+    newByMinImg.setAttribute("src", "static/assets/user-man.jpg");
+    newByMinImg.setAttribute("alt", "conghyoo-image");
     newByMinNameP.setAttribute("class", "container_content_name");
     newByMinTimeP.setAttribute("class", "container_content_time");
     newByMinP.setAttribute("id", "container_content_text_p");
     newByMinP.setAttribute("class", "container_content_text_p");
-    newByMinNameP.append("Ozz min~");
+    newByMinNameP.append("콩휴");
     newByMinTimeP.append(`${today.getHours()}:${today.getMinutes()}`)
     newByMinP.append(message);
     setTimeout(() => {
@@ -205,11 +229,11 @@ const matchSentenceByMin = (message) => {
 
         newByMinDivContainer.appendChild(newByMinNameP);
         newByMinDivContainer.appendChild(newByMinDivContainerTextTime);
-        
+
         newByMinDivContainerTextTime.appendChild(newByMinP);
         newByMinDivContainerTextTime.appendChild(newByMinTimeP);
         scrollControl();
-    }, 1000); 
+    }, 1000);
 }
 
 
@@ -237,5 +261,44 @@ footer_button.addEventListener("click", (event) => {
         }));
         footer_input.value = "";
         scrollControl();
-    }   
+    }
+});
+
+// footer icon click event
+const footer_emoticon = document.querySelector("#footer_emoticon");
+const footer_paperclip = document.querySelector("#footer_paperclip");
+const footer_microphone = document.querySelector("#footer_microphone");
+const footer_icon_dropdown_menu = document.querySelector("#footer_icon_dropdown_menu");
+
+footer_emoticon.addEventListener("click", () => {
+    dropdown_control(footer_icon_dropdown_menu, "footer_icon_dropdown_menu_active");
+});
+footer_emoticon.active = false;
+
+footer_microphone.addEventListener("click", () => {
+    dropdown_control(footer_icon_dropdown_menu, "footer_icon_dropdown_menu_active");
+});
+footer_microphone.active = false;
+
+footer_paperclip.addEventListener("click", () => {
+    dropdown_control(footer_icon_dropdown_menu, "footer_icon_dropdown_menu_active");
+});
+footer_paperclip.active = false;
+
+// greeting message logout 클릭시 event 발생
+const greeting_message = document.querySelector("#greeting_message");
+const logout = document.querySelector("#logout");
+const body_container = document.querySelector("#body_container");
+const greeting_index = document.querySelector("#greeting_index");
+logout.addEventListener("click",()=>{
+    greeting_message.style.display = "flex";
+    // body_container.classList.add("body_container_active");
+    body_container.style.display = "none";
+    greeting_index.style.display = "flex";
+});
+
+// return home click event
+const returnIcon = document.querySelector("#greeting_message_return");
+returnIcon.addEventListener("click", () => {
+    location.reload();
 });
