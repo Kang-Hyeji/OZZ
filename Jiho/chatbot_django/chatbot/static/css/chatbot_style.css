@@ -16,12 +16,21 @@ button{
     box-shadow: none;
 }
 
+ul,
+li{
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
 input:focus,
 button:focus,
 input:active,
 button:active{
     outline: none;
     box-shadow: none;
+    background-color: #eff2f7;
 }
 
 body{
@@ -42,6 +51,13 @@ body{
 /* index section */
 .index{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.greeting_index{
+    display: none;
     flex-direction: column;
     justify-content: center;
     width: 100%;
@@ -120,6 +136,10 @@ body{
     background-color: #fff;
 }
 
+.body_container_active{
+    display: none;
+}
+
 .header{
     display: flex;
     flex-direction: column;
@@ -158,7 +178,7 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .header_content h1{
@@ -195,13 +215,17 @@ body{
 /* 높이 반응형 구현... */
 .container{
     background-color: #eff2f7;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     width: 100%;
-    height: 466px;
+    height: 421px;
     box-shadow: 0px 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0,0,0,0.08), 0px -4px 6px rgba(50, 50, 93, 0.11), 0 -1px 3px rgba(0,0,0,0.08);
     overflow: auto;
     scroll-behavior: smooth;
-    margin-bottom: 5px;
+    margin-bottom: 0;
+    padding-top: 5px;
+    
+    position: relative;
+    top: -3px;
 }
 
 ::-webkit-scrollbar{
@@ -222,9 +246,11 @@ body{
     justify-content: space-between;
     background-color: #fff;
     border-radius: 10px;
-    margin-bottom: 7px;
+    margin-bottom: 4px;
     box-shadow: 0px 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0,0,0,0.08), 0px -4px 6px rgba(50, 50, 93, 0.11), 0 -1px 3px rgba(0,0,0,0.08);
     padding: 5px 3px;
+
+    z-index: 1;
 }
 
 .container_header_img{
@@ -237,9 +263,10 @@ body{
 .container_header_icon{
     display: flex;
     align-items: center;
+    position: relative;
+    margin-right: 5px;
 }
 
-/* 이부분 코드 완성 해야합니다! */
 .container_header_icon_tel{
     display: flex;
     justify-content: center;
@@ -248,6 +275,8 @@ body{
     background-color: #fff;
     border-radius: 10px;
     padding: 3px 0 3px 7px;
+    font-size: 10px;
+    font-weight: 600;
 }
 
 .container_header_icon_tel_number{
@@ -291,9 +320,84 @@ body{
 }
 
 .container_header_img h2{
-    margin-left: 5px;
+    margin-left: 10px;
     font-size: 10px;
     font-weight: 400;
+}
+
+/* container_header_dropdown_menu */
+.container_header_dropdown_menu{
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: -8px;
+    width: 180px;
+
+    background-color: #eff2f7;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0,0,0,0.08), 0px -4px 6px rgba(50, 50, 93, 0.11), 0 -1px 3px rgba(0,0,0,0.08);
+    z-index: 2;
+    font-size: 10px;
+}
+
+.container_header_dropdown_menu::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    right: 15px;
+    width: 0;
+    height: 0;
+    border-top: 9px solid transparent;
+    border-left: 8px solid transparent;
+    border-bottom: 20px solid #eff2f7;
+    border-right: 8px solid transparent;
+}
+
+.container_header_dropdown_menu h3{
+    border-bottom: 1px solid #fff;
+    margin: 0 5px;
+    /* font-size: 14px; */
+    padding: 3px 10px;
+    transition: 250ms;
+}
+
+.container_header_dropdown_menu li{
+    border-bottom: 1px solid #fff;
+    margin-left: 5px;
+    padding: 3px 10px;
+    display: flex;
+    align-items: center;
+    transition: 250ms;
+}
+
+.container_header_dropdown_menu li:last-child{
+    border-bottom: 0;
+}
+
+.container_header_dropdown_menu li img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.container_header_dropdown_menu:hover{
+    cursor: pointer;
+}
+
+
+.container_header_dropdown_menu h3:hover,
+.container_header_dropdown_menu li:hover{
+    background-color: #dbdee4;
+    opacity: 0.7;
+}
+
+.container_header_dropdown_menu h3:active,
+.container_header_dropdown_menu li:active{
+    transform: translateY(0.9px);
+}
+
+.menu_active{
+    display: block;
 }
 
 img{
@@ -312,6 +416,8 @@ img{
     padding: 7px;
     border-radius: 5px;
     box-shadow: 0px 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0,0,0,0.08), 0px -4px 6px rgba(50, 50, 93, 0.11), 0 -1px 3px rgba(0,0,0,0.08);
+
+    position: relative;
 }
 
 .footer_icon{
@@ -327,11 +433,27 @@ img{
     opacity: 0.4;
 }
 
-/* 모바일에서는 hover 동작 안함?! */
 .footer_icon img:hover,
 .footer_icon img:active{
     cursor: pointer;
     opacity: 1;
+}
+
+.footer_icon_dropdown_menu{
+    position: absolute;
+    top: -20px;
+    left: 8px;
+
+    font-weight: 400;
+    font-size: 10px;
+    background-color: #1f2d3d;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+.footer_icon_dropdown_menu_active{
+    display: none;
 }
 
 .footer_form{
@@ -380,6 +502,53 @@ img{
 .footer_button:hover{
     cursor: pointer;
     opacity: 0.8;
+}
+
+.greeting_message{
+    display: none;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100vh;
+}
+
+#greeting_message_apple_image{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 250px;
+}
+
+.greeting_message strong{
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.greeting_message_return{
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+    cursor: pointer;
+    transition: 250ms;
+}
+
+.greeting_message img{
+    width: 15px;
+    height: 15px;
+    border-radius: 0;
+}
+
+.greeting_message_return span{
+    font-size: 12px;
+}
+
+.greeting_message_return:hover{
+    opacity: 0.5;
+}
+
+.greeting_message_return:active{
+    transform: translateY(0.9px);
 }
 
 /* js creatElem code */
@@ -469,7 +638,6 @@ img{
     border-radius: 5px;
 }
 
-/* 이 코드 마무리 해야함! */
 .container_content_user .container_content_text_p::after{
     border-top: 5px solid #fff;
     border-left: 0px solid transparent;
@@ -491,26 +659,27 @@ img{
 /* iphone 678 */
 @media screen and (min-width: 375px){
     .container{
-        height: 564px;
+        height: 520px;
     }
 }
 
 /* iphone 678 plus */
 @media screen and (min-width: 414px){
     .container{
-        height: 634px;
+        height: 589px;
     }
 }
 
 /* iphone x */
 @media screen and (min-height: 812px) and (min-width: 375px){
     .container{
-        height: 710px;
+        height: 667px;
     }
 }
 
 /* desktop */
 @media screen and (min-width: 768px){
+    .greeting_index,
     .index{
         width: 500px;
         height: 800px;
@@ -562,6 +731,7 @@ img{
         position: relative;
         top: 2px;
         font-size: 12px;
+        font-weight: 600;
     }
 
     .index_header_main_image img,
@@ -589,15 +759,18 @@ img{
     }
 
     .container{
-        height: 660px;
+        height: 578px;
+        /* padding-top: 88px; */
     }
 
     .container_header{
         padding: 10px 0;
+        /* top: 135px; */
+        /* width: 468px; */
     }
 
     .container_header h2{
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 600;
     }
     
@@ -619,6 +792,32 @@ img{
         padding: 10px 10px;
     }
 
+    .container_header_icon_tel{
+        font-size: 14px;
+    }
+    
+    /* p-tag font-size */
+    .container_content_text_p{
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .container_content_name{
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    /* dropdown-menu */
+    .container_header_dropdown_menu{
+        top: 52px;
+        font-size: 14px;
+    }
+
+    .container_header_dropdown_menu::before{
+        top: -18px;
+        right: 30px;
+    }
+
     .footer_icon img{
         width: 25px;
         height: 25px;
@@ -626,7 +825,10 @@ img{
 
     .footer_input{
         height: 30px;
-        font-size: 12px;
+    }
+
+    .footer_form input{
+        font-size: 14px;
     }
 
     .footer_button{
@@ -634,4 +836,21 @@ img{
         width: 40px;
         font-size: 12px;
     }
+
+    .footer_icon_dropdown_menu{
+        top: -27px;
+        font-size: 14px;
+    }
+
+    #greeting_message_apple_image{
+        width: 85px;
+        height: 85px;
+        margin-bottom: 320px;
+    }
+
+    .greeting_message strong{
+        margin-bottom: 50px;
+    }
+
+
 }
