@@ -24,9 +24,8 @@
 
 ![conversation_etc](https://user-images.githubusercontent.com/68001045/99031258-04d2ca00-25ba-11eb-8db3-568dc630f6c6.jpg)
 
-#### 채팅방 나가기 및 종료 화면
+#### 로그아웃 및 종료 화면
 
-<<<<<<< HEAD
 ![logout](https://user-images.githubusercontent.com/68001045/99031278-1025f580-25ba-11eb-9bb5-8af94e2a9870.jpg)
 
 ![end](https://user-images.githubusercontent.com/68001045/99031299-1ae08a80-25ba-11eb-8484-003ef276067b.jpg)
@@ -34,6 +33,3 @@
 #### 시연영상
 
 ##### 준비중..
-=======
-#### 시연영상
->>>>>>> 70fcc62503f2579a608af0958f02d1edf60afe75
